@@ -22,7 +22,7 @@
  OFLAGS		:= $(CFLAGS) -fPIC
  SFLAGS		:= $(CFLAGS) -shared -nostartfiles
  
-@@ -49,11 +41,10 @@
+@@ -49,14 +41,13 @@
  all:		$(BIN)
  
  install:	$(BIN)
@@ -36,5 +36,10 @@
 +		mkdir -p "$(DESTDIR)$(LIBDIR)"
 +		$(INSTALL) -m 755 $(LIB) $(DESTDIR)$(LIBDIR)
  
- nf-hipac:	%:%.o -ldl $(LIB) nf-hipac-core.o
- 		$(CC) $(BINFLAGS) $^ -o $@
+-nf-hipac:	%:%.o -ldl $(LIB) nf-hipac-core.o
+-		$(CC) $(BINFLAGS) $^ -o $@
++nf-hipac:	%:%.o $(LIB) nf-hipac-core.o
++		$(CC) $(BINFLAGS) $^ -o $@ -ldl
+ 
+ clean:
+ 		-@ rm -f $(SRC:.c=.d) $(SRC:.c=.o) $(BIN) $(LIB)
