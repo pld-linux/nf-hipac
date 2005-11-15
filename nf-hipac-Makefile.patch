@@ -1,0 +1,40 @@
+--- nf-hipac-0.9.1/user/Makefile.orig	2005-10-11 18:49:59.000000000 +0200
++++ nf-hipac-0.9.1/user/Makefile	2005-11-15 15:37:33.854898000 +0100
+@@ -26,20 +26,12 @@
+ 
+ CFLAGS		:= -Wall -Wno-long-long -Wstrict-prototypes -Wno-trigraphs   \
+ 		   -Wunused -fno-strict-aliasing -fno-common -rdynamic \
+-		   -D IPT_LIB_DIR=\"$(IPT_LIB_DIR)\"
++		   -D IPT_LIB_DIR=\"$(IPT_LIB_DIR)\" $(OPTFLAGS)
+ 
+ ifeq ($(IPTABLES_1_2), true)
+ CFLAGS += -D IPTABLES_1_2
+ endif
+ 
+-ifeq ($(DEBUG), true)
+-CFLAGS += -g
+-BINFLAGS := $(CFLAGS) -Wl,-rpath,$(shell pwd)
+-else
+-CFLAGS += -O2 -fomit-frame-pointer
+-BINFLAGS := $(CFLAGS)
+-endif
+-
+ OFLAGS		:= $(CFLAGS) -fPIC
+ SFLAGS		:= $(CFLAGS) -shared -nostartfiles
+ 
+@@ -49,11 +41,10 @@
+ all:		$(BIN)
+ 
+ install:	$(BIN)
+-		mkdir -p "$(BINDIR)"
+-		$(INSTALL) -o root -g root -m 755 $(BIN) $(BINDIR)
+-		mkdir -p "$(LIBDIR)"
+-		$(INSTALL) -o root -g root -m 755 $(LIB) $(LIBDIR)
+-		$(LDCONFIG)
++		mkdir -p "$(DESTDIR)$(BINDIR)"
++		$(INSTALL) -m 755 $(BIN) $(DESTDIR)$(BINDIR)
++		mkdir -p "$(DESTDIR)$(LIBDIR)"
++		$(INSTALL) -m 755 $(LIB) $(DESTDIR)$(LIBDIR)
+ 
+ nf-hipac:	%:%.o -ldl $(LIB) nf-hipac-core.o
+ 		$(CC) $(BINFLAGS) $^ -o $@
