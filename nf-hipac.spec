@@ -4,7 +4,7 @@ Version:	0.9.1
 Release:	1
 License:	GPL v2
 Group:		Applications
-Source0:	%{name}-%{version}.tar.bz2
+Source0:	http://dl.sourceforge.net/sourceforge/nf-hipac/%{name}-%{version}.tar.bz2
 # Source0-md5:	725efec87aa93e8e83e8799c9058f143
 Patch0:		%{name}-Makefile.patch
 URL:		http://www.hipac.org/
