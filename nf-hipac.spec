@@ -1,10 +1,11 @@
 Summary:	nf-HiPAC - high performance packet classification
+Summary(pl):	nf-HiPAC - wysoko wydajna klasyfikacja pakietów
 Name:		nf-hipac
 Version:	0.9.1
 Release:	1
 License:	GPL v2
-Group:		Applications
-Source0:	http://dl.sourceforge.net/sourceforge/nf-hipac/%{name}-%{version}.tar.bz2
+Group:		Applications/System
+Source0:	http://dl.sourceforge.net/nf-hipac/%{name}-%{version}.tar.bz2
 # Source0-md5:	725efec87aa93e8e83e8799c9058f143
 Patch0:		%{name}-Makefile.patch
 URL:		http://www.hipac.org/
@@ -29,48 +30,27 @@ can construct your rules like you are used to. From a user's point of
 view there is no need to understand anything about the HiPAC
 algorithm.
 
-The nf-hipac user space tool is designed to be as compatible as
-possible to 'iptables -t filter'. It even supports the full power of
-iptables targets, matches and stateful packet filtering (connection
-tracking) besides the native nf-HiPAC matches. This makes a switch
-from iptables to nf-HiPAC very easy. Usually it is sufficient to
-replace the calls to iptables with calls to nf-hipac for your filter
-rules.
+%description -l pl
+nf-HiPAC to w pe³ni funkcjonalny filtr pakietów dla Linuksa
+demonstruj±cy si³ê i elastyczno¶æ HiPAC-a. HiPAC to nowy szkielet
+klasyfikacji pakietów u¿ywaj±cy zaawansowanego algorytmu do
+ograniczenia liczby wyszukiwañ w pamiêci dla pakietu. Jest idealny dla
+¶rodowisk z du¿ymi zbiorami regu³ i/lub sieci o du¿ej przepustowo¶ci.
 
-Why another packet filter?
-
-Performance:
-
-iptables, like most packet filters, uses a simple packet
-classification algorithm which traverses the rules in a chain linearly
-per packet until a matching rule is found (or not). Clearly, this
-approach lacks efficiency. As networks grow more and more complex and
-offer a wider bandwidth linear packet filtering is no longer an option
-if many rules have to be matched per packet. Higher bandwidth means
-more packets per second which leads to shorter process times per
-packet. nf-HiPAC outperforms iptables regardless of the number of
-rules, i.e. the HiPAC classification engine does not impose any
-overhead even for very small rule sets.
-
-Scalability to large rule sets:
-
-The performance of nf-HiPAC is nearly independent of the number of
-rules. nf-HiPAC with thousands of rules still outperforms iptables
-with 20 rules.
-
-Dynamic rule sets:
-
-nf-HiPAC offers fast dynamic rules et updates without stalling packet
-classification in contrast to iptables which yields bad update
-performance along with stalled packet processing during updates.
+nf-HiPAC udostêpnia ten sam bogaty zbiór mo¿liwo¶ci co iptables -
+popularny linuksowy filtr pakietów. Z³o¿ono¶æ wyszukanego algorytmu
+klasyfikacji pakietów HiPAC-a jest ukryta za zgodnym z iptables
+interfejsem u¿ytkownika czyni±cy nf-HiPAC-a zamiennikiem iptables.
+Przy tym zachowana jest semantyka regu³ iptables, czyli mo¿na tworzyæ
+regu³y tak samo jak wcze¶niej. Z punktu widzenia u¿ytkownika nie ma
+potrzeby rozumienia niczego o algorytmie HiPAC.
 
 %prep
 %setup -q
 %patch0 -p1
 
 %build
-cd user
-%{__make} clean all \
+%{__make} -C user clean all \
 	CC="%{__cc}" \
 	OPTFLAGS="%{rpmcflags}" \
 	PREFIX=%{_prefix} \
@@ -80,8 +60,7 @@ cd user
 %install
 rm -rf $RPM_BUILD_ROOT
 
-cd user
-%{__make} install \
+%{__make} -C user install \
 	PREFIX=%{_prefix} \
 	LIBDIR=%{_libdir} \
 	DESTDIR=$RPM_BUILD_ROOT
