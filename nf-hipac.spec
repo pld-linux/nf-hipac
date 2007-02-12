@@ -1,5 +1,5 @@
 Summary:	nf-HiPAC - high performance packet classification
-Summary(pl):	nf-HiPAC - wysoko wydajna klasyfikacja pakietÛw
+Summary(pl.UTF-8):   nf-HiPAC - wysoko wydajna klasyfikacja pakiet√≥w
 Name:		nf-hipac
 Version:	0.9.1
 Release:	1
@@ -30,19 +30,19 @@ can construct your rules like you are used to. From a user's point of
 view there is no need to understand anything about the HiPAC
 algorithm.
 
-%description -l pl
-nf-HiPAC to w pe≥ni funkcjonalny filtr pakietÛw dla Linuksa
-demonstruj±cy si≥Í i elastyczno∂Ê HiPAC-a. HiPAC to nowy szkielet
-klasyfikacji pakietÛw uøywaj±cy zaawansowanego algorytmu do
-ograniczenia liczby wyszukiwaÒ w pamiÍci dla pakietu. Jest idealny dla
-∂rodowisk z duøymi zbiorami regu≥ i/lub sieci o duøej przepustowo∂ci.
+%description -l pl.UTF-8
+nf-HiPAC to w pe≈Çni funkcjonalny filtr pakiet√≥w dla Linuksa
+demonstrujƒÖcy si≈Çƒô i elastyczno≈õƒá HiPAC-a. HiPAC to nowy szkielet
+klasyfikacji pakiet√≥w u≈ºywajƒÖcy zaawansowanego algorytmu do
+ograniczenia liczby wyszukiwa≈Ñ w pamiƒôci dla pakietu. Jest idealny dla
+≈õrodowisk z du≈ºymi zbiorami regu≈Ç i/lub sieci o du≈ºej przepustowo≈õci.
 
-nf-HiPAC udostÍpnia ten sam bogaty zbiÛr moøliwo∂ci co iptables -
-popularny linuksowy filtr pakietÛw. Z≥oøono∂Ê wyszukanego algorytmu
-klasyfikacji pakietÛw HiPAC-a jest ukryta za zgodnym z iptables
-interfejsem uøytkownika czyni±cy nf-HiPAC-a zamiennikiem iptables.
-Przy tym zachowana jest semantyka regu≥ iptables, czyli moøna tworzyÊ
-regu≥y tak samo jak wcze∂niej. Z punktu widzenia uøytkownika nie ma
+nf-HiPAC udostƒôpnia ten sam bogaty zbi√≥r mo≈ºliwo≈õci co iptables -
+popularny linuksowy filtr pakiet√≥w. Z≈Ço≈ºono≈õƒá wyszukanego algorytmu
+klasyfikacji pakiet√≥w HiPAC-a jest ukryta za zgodnym z iptables
+interfejsem u≈ºytkownika czyniƒÖcy nf-HiPAC-a zamiennikiem iptables.
+Przy tym zachowana jest semantyka regu≈Ç iptables, czyli mo≈ºna tworzyƒá
+regu≈Çy tak samo jak wcze≈õniej. Z punktu widzenia u≈ºytkownika nie ma
 potrzeby rozumienia niczego o algorytmie HiPAC.
 
 %prep
