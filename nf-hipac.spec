@@ -1,5 +1,5 @@
 Summary:	nf-HiPAC - high performance packet classification
-Summary(pl.UTF-8):   nf-HiPAC - wysoko wydajna klasyfikacja pakietów
+Summary(pl.UTF-8):	nf-HiPAC - wysoko wydajna klasyfikacja pakietów
 Name:		nf-hipac
 Version:	0.9.1
 Release:	1
